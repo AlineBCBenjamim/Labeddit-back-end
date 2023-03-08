@@ -101,3 +101,6 @@ CREATE TABLE
         FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE ON UPDATE CASCADE,
         UNIQUE (user_id, comment_id, post_id)
     );
+
+    SELECT * FROM comments;
+    
