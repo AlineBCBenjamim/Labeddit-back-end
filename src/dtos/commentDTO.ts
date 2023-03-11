@@ -8,14 +8,9 @@ export interface CreateCommentOutput {
     message: string
 }
 
-export interface CommentInput {
-    postId: string,
-    content: string,
+export interface DeleteCommentInput {
+    commentId: string,
     token: string | undefined
-}
-
-export interface CommentsByPostIdOutput {
-    message: string
 }
 
 export interface GetCommentsByPostIdInput {

@@ -17,25 +17,25 @@ VALUES (
         "Bárbara",
         "barbara@labenu.com",
         "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq",
-        "author"
+        "NORMAL"
     ), (
         "u002",
         "Naomy",
         "naomy@labenu.com",
         "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq",
-        "author"
+        "NORMAL"
     ), (
         "u003",
         "Paulinha",
         "paulinha@labenu.com",
         "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq",
-        "admin"
+        "ADMIN"
     ), (
         "u004",
         "Filipe",
         "filipe@labenu.com",
         "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq",
-        "author"
+        "NORMAL"
     );
 
 SELECT * FROM users;
@@ -68,14 +68,14 @@ SELECT * FROM posts;
 
 CREATE TABLE
     comments (
-        id TEXT PRIMARY KEY UNIQUE NOT NULL,
-        creator_id TEXT NOT NULL,
+        id TEXT PRIMARY KEY UNIQUE NOT NULL,        
         post_id TEXT NOT NULL,
         content TEXT NOT NULL,
         likes INTEGER DEFAULT(0),
         dislikes INTEGER DEFAULT(0),
         created_at TEXT DEFAULT(DATETIME()),
         updated_at TEXT DEFAULT(DATETIME()),
+        creator_id TEXT NOT NULL, 
         FOREIGN KEY (creator_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
@@ -104,3 +104,10 @@ CREATE TABLE
 
     SELECT * FROM comments;
     
+    INSERT INTO comments (id, post_id, content, creator_id) VALUES
+    ("c001", "p001", "I really like to eat strawberry!", "u001"),
+    ("c002", "p002", "I like the little mermaid", "u002"), 
+    ("c003", "p004", "I like disney", "u002"), 
+    ("c004", "p003", "I like to eat pasta", "u003"), 
+    ("c005", "p002", "I like to sleep", "u004"), 
+    ("c006", "p001", "I like to play video games", "u003"); 
