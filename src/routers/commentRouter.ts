@@ -17,4 +17,5 @@ const commentController = new CommentController(
   )
 )
 
+commentRouter.get("/:id", commentController.getComments)
 commentRouter.post("/:id", commentController.createComment)

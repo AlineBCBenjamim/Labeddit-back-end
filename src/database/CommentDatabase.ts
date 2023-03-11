@@ -1,11 +1,11 @@
-import { CommentDB, LikeDislikeCommentDB, LikeDislikeDB, POST_LIKE } from "../types";
-import { BaseDatabase } from "./BaseDatabase";
+import { CommentDB, CommentWithCreatorDB, LikeDislikeCommentDB, LikeDislikeDB, POST_LIKE } from "../types";
+import { BaseDatabase } from './BaseDatabase';
 
 export class CommentDatabase extends BaseDatabase {
   public static TABLE_COMMENTS = "comments"
   public static TABLE_LIKES_DISLIKES_COMMENTS = "likes_dislikes_comments"
 
-  public getCommentsByPostId = async (postId: string): Promise<CommentDB[]> => {
+  public getComments = async (postId: string): Promise<CommentDB[]> => {
     const commentsDB = await BaseDatabase
       .connection(CommentDatabase.TABLE_COMMENTS)
       .select()
@@ -74,4 +74,25 @@ export class CommentDatabase extends BaseDatabase {
         post_id: likeDislikeDBToFind.post_id
       })
   }
+
+  getCommentWithCreatorByPostId = async (post_id: string) => {
+    const result: CommentWithCreatorDB[] = await BaseDatabase
+    .connection(CommentDatabase.TABLE_COMMENTS)
+    .select(
+    "comments.id",
+    "comments.post_id",
+    "comments.creator_id",
+    "comments.content",
+    "comments.likes",
+    "comments.dislikes",
+    "comments.created_at",
+    "comments.updated_at",
+    "users.name AS creator_name"
+    )
+    .join("users", "comments.creator_id", "=", "users.id")
+    .where({post_id})
+
+    return result
+  }
 }
+
