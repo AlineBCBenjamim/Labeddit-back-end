@@ -4,7 +4,7 @@ import {
   LoginOutput,
   SignupInput,
   SignupOutput,
-} from "../dtos/UserDTO";
+} from "../dtos/userDTO";
 import { BadRequestError } from "../errors/BadRequestError";
 import { NotFoundError } from "../errors/NotFoundError";
 import { User } from "../models/User";

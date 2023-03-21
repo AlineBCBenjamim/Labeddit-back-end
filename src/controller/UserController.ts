@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { UserBusiness } from "../business/UserBusiness"
-import { LoginInput, SignupInput } from "../dtos/UserDTO"
+import { LoginInput, SignupInput } from "../dtos/userDTO"
 
 export class UserController {
     constructor(
