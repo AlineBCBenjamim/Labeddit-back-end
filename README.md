@@ -83,12 +83,6 @@
 
 ---
 
-## 🧠 Deploy
-
-- Vercel <https://labeddit-front-end-nine.vercel.app/login>
-
----
-
 ## 📀Rodando o Projeto
 
 - Rode o console na pasta em que você baixou os arquivos;
