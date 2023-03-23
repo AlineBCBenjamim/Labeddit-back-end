@@ -2,7 +2,7 @@
 
 ![Labook](/src//assets/logoSmall.svg)
 
-![Badge Ajustando](http://img.shields.io/static/v1?label=STATUS&message=AJUSTANDO&color=RED&style=for-the-badge)
+![Badge Finalizado](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=RED&style=for-the-badge)
 ---
 
 ## 📑Introdução
